@@ -1,20 +1,18 @@
 # Precise Positioning of Ultrasound-Guided Fine-needle Aspiration Biopsy of Thyroid Nodule
 
-## In this paper, we construct the Thyroid Nodule Ultrasound (TNUS) dataset with thyroid nodule positions and puncture annotations, lacking in existing datasets. It supports future research in automating detection and diagnosis, enhancing diagnostic accuracy and clinical applications.
+# TNUS Dataset: Thyroid Nodule Ultrasound dataset
+
+## Overview
+In this paper, we construct the Thyroid Nodule Ultrasound (TNUS) dataset with thyroid nodule positions and puncture annotations, lacking in existing datasets. It supports future research in automating detection and diagnosis, enhancing diagnostic accuracy and clinical applications. The TNUS dataset is a curated collection of thyroid nodule ultrasound (US) images designed to support research in puncture position detection and nodule segmentation. It contains **4,376 images** with puncture position annotations and **2,626 additional images** with thyroid/nodule masks. Data were collected from a local hospital and rigorously preprocessed to ensure quality. Key features include:
+- Paired `before-puncture` and `during-puncture` states for classification
+- Expert-annotated segmentation masks
+- Pre-split training/validation sets
 
 <img width="699" alt="image" src="https://github.com/user-attachments/assets/64d9bb7d-35d7-44f9-8f08-d6c0c66dd051" />
 
 <img width="467" alt="image" src="https://github.com/user-attachments/assets/f1d23caf-47ee-4cce-af1b-886eca422d71" />
 
 <img width="711" alt="image" src="https://github.com/user-attachments/assets/36f94014-a6b2-48bf-a66c-19e4561cdb18" />
-
-# TNUS Dataset: Thyroid Nodule Ultrasound dataset
-
-## Overview
-The TNUS dataset is a curated collection of thyroid nodule ultrasound (US) images designed to support research in puncture position detection and nodule segmentation. It contains **4,376 images** with puncture position annotations and **2,626 additional images** with thyroid/nodule masks. Data were collected from a local hospital and rigorously preprocessed to ensure quality. Key features include:
-- Paired `before-puncture` and `during-puncture` states for classification
-- Expert-annotated segmentation masks
-- Pre-split training/validation sets
 
 ## Dataset Structure
 ### Folder 1: `part1_for_cls` (Classification Task)
