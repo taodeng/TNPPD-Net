@@ -73,8 +73,10 @@ part1_for_seg/
   - File suffix convention (`_b`, `_i`)
   - Batch scripts for consistency checking
 
+# TNPPD-Net: Thyroid Nodule Puncture Position Detection Network
 
-## We propose TNPPD-Net, a thyroid nodule puncture detection network integrating positional features. It has two branches: one for positional features, the other for localization features. They are fused to predict puncture positions. Our model excels on the TNUS dataset, with visualized key features supporting its effectiveness.
+## Overview
+We propose TNPPD-Net, a thyroid nodule puncture position detection network integrating positional features. It has two branches: one for positional features, the other for localization features. They are fused to predict puncture positions. Our model excels on the TNUS dataset, with visualized key features supporting its effectiveness.
 
 <img width="684" alt="image" src="https://github.com/user-attachments/assets/c6094b97-dc31-4c3a-9799-430bf60b07d3" />
 
