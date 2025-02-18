@@ -94,4 +94,4 @@ We propose TNPPD-Net, a thyroid nodule puncture position detection network integ
 
 <img width="1412" alt="image" src="https://github.com/user-attachments/assets/54aa3372-372b-4a32-9f0e-aca36074d014" />
 
-## The dataset and code are coming soon.
+## The code is coming soon.
