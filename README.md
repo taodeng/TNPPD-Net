@@ -74,10 +74,10 @@ part1_for_seg/
   - Batch scripts for consistency checking
 
 ## Dataset Download Links
-The dataset is available for download via the following platforms:
-- **Google Drive**: [Download Link](https://drive.google.com/file/d/1Sa2lc9OrFATFvqmxPTlsDA6GzNQ50oio/view?usp=drive_link)
-- **Baidu Netdisk**: [Download Link](https://pan.baidu.com/s/1gKo_HkU8KXFRP0vN4nnjbg?pwd=TNUS)  
-  - Extraction Code: `TNUS`
+The dataset will be available after the paper is accepted.
+- **Google Drive**: coming soon.
+- **Baidu Netdisk**: coming soon.
+
 
 # TNPPD-Net: Thyroid Nodule Puncture Position Detection Network
 
