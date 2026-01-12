@@ -11,6 +11,10 @@ This repository provides qualitative results of our model evaluated on real thyr
 https://github.com/user-attachments/assets/2a41e6c3-76f8-4e59-81c8-74512b545163
 
 
+https://github.com/user-attachments/assets/38cc2630-e0fe-4d1b-b471-746a428813ac
+
+
+
 <video width="800" height="450" controls autoplay muted loop>
   <source src="https://github.com/taodeng/TNPPD-Net/blob/main/Qualitative%20video%20demo/pred.mp4" type="video/mp4">
 </video>
