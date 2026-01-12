@@ -10,7 +10,7 @@ This repository provides qualitative results of our model evaluated on real thyr
 <video width="800" height="450" controls autoplay muted loop>
   <source src="https://github.com/taodeng/TNPPD-Net/blob/main/Qualitative%20video%20demo/pred.mp4" type="video/mp4">
 </video>
-
+<video src="https://github.com/taodeng/TNPPD-Net/blob/main/Qualitative%20video%20demo/pred.mp4" controls="controls" width="500" height="300"></video>
 - pred_slow.mp4  
   Slow-motion version of pred.mp4 (1/10x speed) for easier frame-level inspection.
   
