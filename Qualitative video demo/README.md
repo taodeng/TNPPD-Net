@@ -1,0 +1,35 @@
+# Qualitative Video Results
+
+This repository provides qualitative results of our model evaluated on real thyroid puncture videos, showing frame-by-frame puncture state prediction.
+
+## Files
+
+- pred.mp4  
+  Prediction results at normal playback speed.
+
+- pred_slow.mp4  
+  Slow-motion version of pred.mp4 (1/10x speed) for easier frame-level inspection.
+
+## On-Screen Information
+
+Each frame contains the following overlays:
+
+- Frame: current frame index  
+- State: puncture state predicted by the model  
+- FPS: real-time inference speed, dynamically varying according to per-frame computation time
+
+## Prediction Visualization
+
+- Green indicates the predicted state matches the physician’s annotation.  
+- Red indicates the predicted state does not match the physician’s annotation.
+
+## Runtime Environment
+
+- GPU: NVIDIA RTX 3090 (single GPU)  
+- Inference mode: frame-by-frame, real-time processing
+
+## Notes
+
+- The model is trained on a static-frame dataset and applied to continuous puncture videos.  
+- These videos are provided for qualitative demonstration.  
+- Construction of a dedicated thyroid puncture video dataset with frame-level annotations and the development of temporal models are ongoing and planned as future work.
