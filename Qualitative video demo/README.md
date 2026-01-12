@@ -7,6 +7,10 @@ This repository provides qualitative results of our model evaluated on real thyr
 - pred.mp4  
   Prediction results at normal playback speed.
   
+
+https://github.com/user-attachments/assets/2a41e6c3-76f8-4e59-81c8-74512b545163
+
+
 <video width="800" height="450" controls autoplay muted loop>
   <source src="https://github.com/taodeng/TNPPD-Net/blob/main/Qualitative%20video%20demo/pred.mp4" type="video/mp4">
 </video>
