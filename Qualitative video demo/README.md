@@ -6,13 +6,14 @@ This repository provides qualitative results of our model evaluated on real thyr
 
 - pred.mp4  
   Prediction results at normal playback speed.
-
-
-https://github.com/user-attachments/assets/2cf266f4-528e-4a00-ac42-65e139673c5f
-
+  
+<video src="pred.mp4" controls="controls" width="500" height="300"></video>
 
 - pred_slow.mp4  
   Slow-motion version of pred.mp4 (1/10x speed) for easier frame-level inspection.
+  
+  <video src="pred_slow.mp4" controls="controls" width="500" height="300"></video>
+  
 
 ## On-Screen Information
 
