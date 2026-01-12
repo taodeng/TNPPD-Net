@@ -8,7 +8,7 @@ This repository provides qualitative results of our model evaluated on real thyr
   Prediction results at normal playback speed.
   https://github.com/taodeng/TNPPD-Net/blob/main/Qualitative%20video%20demo/pred.mp4
 
-https://github.com/user-attachments/assets/2a41e6c3-76f8-4e59-81c8-74512b545163
+https://github.com/user-attachments/assets/2a41e6c3-76f8-4e59-81c8-74512b545163.mp4
 
 
 https://github.com/user-attachments/assets/38cc2630-e0fe-4d1b-b471-746a428813ac
