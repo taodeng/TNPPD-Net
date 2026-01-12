@@ -7,8 +7,10 @@ This repository provides qualitative results of our model evaluated on real thyr
 - pred.mp4  
   Prediction results at normal playback speed.
   
-<video src="pred.mp4" controls="controls" width="500" height="300"></video>
-
+<video width="800" height="450" controls autoplay muted loop>
+  <source src="[视频文件的URL](https://github.com/taodeng/TNPPD-Net/blob/main/Qualitative%20video%20demo/pred.mp4
+)" type="video/mp4">
+</video>
 - pred_slow.mp4  
   Slow-motion version of pred.mp4 (1/10x speed) for easier frame-level inspection.
   
