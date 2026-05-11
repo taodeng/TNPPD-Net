@@ -4,6 +4,14 @@ This repository contains the official PyTorch implementation for **TNPPD-Net**, 
 
 The repository provides the complete model architecture, data loading utilities, multi-stage training scripts, and evaluation codes for both classification and segmentation tasks based on the [TNUS dataset](./TNUS/README.md).
 
+## Conceptual alignment between the clinical workflow and the proposed TNPPD-Net logic
+<img width="2378" height="1292" alt="image" src="https://github.com/user-attachments/assets/be225757-f38e-4f34-9279-c91d94cbf689" />
+
+## Overall framework diagram of the proposed TNPPD-Net
+<img width="2414" height="1432" alt="image" src="https://github.com/user-attachments/assets/aed0fc34-c875-4e11-a928-8805a4157f46" />
+
+
+
 ## Directory Structure
 
     ├── model/                 # TNPPD-Net model architecture definitions
@@ -23,6 +31,9 @@ The repository provides the complete model architecture, data loading utilities,
 ## Training Pipeline
 
 The training process of TNPPD-Net is conducted in three sequential stages. Please run the scripts in the following order.
+
+<img width="2508" height="496" alt="image" src="https://github.com/user-attachments/assets/28bdfd92-9081-41f0-bb20-0da1e25ba3e3" />
+
 
 ### Step 1: Initial Segmentation Training
 The first step focuses on the initial training for the segmentation task. No pre-trained weights are required for this stage.
@@ -57,6 +68,9 @@ Run `test_seg.py` to evaluate segmentation performance. The examples below demon
     # Test Step 3 weights
     python test_seg.py --device 'cuda:0' --batch_size 8 --exp_name 'TNPPD' --data_path_s './TNUS/part2_for_seg' --model_test_path './TNPPD_weights/step3_retra_seg.pth'
 
+<img width="2518" height="826" alt="image" src="https://github.com/user-attachments/assets/63f1683e-6b5c-486f-a7f8-cab6d7a03081" />
+
+
 ### Classification Testing
 Run `test_cls.py` to evaluate classification performance. The examples below demonstrate how to test weights derived from Step 2 and Step 3:
 
@@ -65,3 +79,9 @@ Run `test_cls.py` to evaluate classification performance. The examples below dem
 
     # Test Step 3 weights
     python test_cls.py --device 'cuda:0' --batch_size 8 --exp_name 'TNPPD' --data_path_c './TNUS/part1_for_cls' --model_test_path './TNPPD_weights/step3_retra_seg.pth'
+### Inference speed vs accuracy across models (bubble size ∝ params)
+<img width="1708" height="1482" alt="image" src="https://github.com/user-attachments/assets/5bbd837d-0e51-456c-ade8-79443eb2e943" />
+
+### Visual comparison of Grad-CAM heatmaps
+<img width="2494" height="1944" alt="image" src="https://github.com/user-attachments/assets/44cb8352-36b8-4540-885e-adcb6bcd0cbb" />
+
