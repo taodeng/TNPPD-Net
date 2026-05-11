@@ -6,6 +6,10 @@ The TNUS dataset is a curated collection of thyroid nodule ultrasound (US) image
 - Expert-annotated segmentation masks
 - Pre-split train/test sets
 
+<img width="2522" height="984" alt="image" src="https://github.com/user-attachments/assets/f0bc92da-63cc-459c-9cfc-65ba9486670e" />
+
+
+
 ## Dataset Structure
 ### Folder 1: `part1_for_cls` (Classification Task)
 ```
@@ -30,6 +34,9 @@ part1_for_cls/
 - **One-to-one correspondence**: Each `_b` image has a matching `_i` image from the same patient.
 - **Labels**: File suffixes indicate puncture state (`_b` = before, `_i` = during).
 
+
+<img width="2514" height="1408" alt="image" src="https://github.com/user-attachments/assets/7600a4d6-1daf-40f3-9fa4-a99b2325997e" />
+
 ### Folder 2: `part2_for_seg` (Segmentation Task)
 ```
 part2_for_seg/
@@ -42,6 +49,9 @@ part2_for_seg/
 ```
 - **Masks**: Binary segmentation masks (0=background, 1=target) created using MITK software under medical supervision.
 - **Note**: Only before-puncture nodule positions are annotated due to morphological changes during puncture.
+
+<img width="2514" height="1408" alt="image" src="https://github.com/user-attachments/assets/d9052c4f-b2f5-4d3a-a625-f386dfd3f02d" />
+
 
 ## Data Preprocessing
 1. **Quality Control**: Removed images with:
