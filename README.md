@@ -1,4 +1,5 @@
 # TNPPD-Net: Precise Positioning of Ultrasound-guided Fine-needle Aspiration Biopsy of Thyroid Nodule
+### Tao Deng, Shengqi Chen, Chengfan Yang, Yi Huang, Buyun Ma, Yang Chen. *Pattern Recognition*, 2026, under review.
 
 This repository contains the official PyTorch implementation for **TNPPD-Net**, designed for the intelligent recognition and precise positioning of ultrasound-guided fine-needle aspiration biopsy (FNAB) of thyroid nodules. 
 
