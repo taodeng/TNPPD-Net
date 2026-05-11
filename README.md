@@ -1,97 +1,67 @@
-# Precise Positioning of Ultrasound-Guided Fine-needle Aspiration Biopsy of Thyroid Nodule
+# TNPPD-Net: Precise Positioning of Ultrasound-guided Fine-needle Aspiration Biopsy of Thyroid Nodule
 
-# TNUS Dataset: Thyroid Nodule Ultrasound dataset
+This repository contains the official PyTorch implementation for **TNPPD-Net**, designed for the intelligent recognition and precise positioning of ultrasound-guided fine-needle aspiration biopsy (FNAB) of thyroid nodules. 
 
-## Overview
-In this paper, we construct the Thyroid Nodule Ultrasound (TNUS) dataset with thyroid nodule positions and puncture annotations, lacking in existing datasets. It supports future research in automating detection and diagnosis, enhancing diagnostic accuracy and clinical applications. The TNUS dataset is a curated collection of thyroid nodule ultrasound (US) images designed to support research in puncture position detection and nodule segmentation. It contains **4,376 images** with puncture position annotations and **2,626 additional images** with thyroid/nodule masks. Data were collected from a local hospital and rigorously preprocessed to ensure quality. Key features include:
-- Paired `before-puncture` and `during-puncture` states for classification
-- Expert-annotated segmentation masks
-- Pre-split training/validation sets
+The repository provides the complete model architecture, data loading utilities, multi-stage training scripts, and evaluation codes for both classification and segmentation tasks based on the [TNUS dataset](./TNUS/README.md).
 
-<img width="699" alt="image" src="https://github.com/user-attachments/assets/64d9bb7d-35d7-44f9-8f08-d6c0c66dd051" />
+## Directory Structure
 
-<img width="467" alt="image" src="https://github.com/user-attachments/assets/f1d23caf-47ee-4cce-af1b-886eca422d71" />
+    ├── model/                 # TNPPD-Net model architecture definitions
+    ├── TNPPD_weights/         # Pre-trained .pth model weights provided by our team
+    ├── TNUS/                  # Thyroid Nodule Ultrasound (TNUS) dataset directory
+    ├── class_indices.json     # Dictionary configuration for class indices
+    ├── MyDataSet.py           # Custom dataset loading and preprocessing logic
+    ├── utils.py               # Common utility functions
+    ├── step1_tra_seg.py       # Stage 1: Initial segmentation training script
+    ├── step2_tra_cls.py       # Stage 2: Classification training script
+    ├── step3_retra_seg.py     # Stage 3: Segmentation re-training script
+    ├── test_seg.py            # Evaluation script for segmentation tasks
+    └── test_cls.py            # Evaluation script for classification tasks
 
-<img width="711" alt="image" src="https://github.com/user-attachments/assets/36f94014-a6b2-48bf-a66c-19e4561cdb18" />
+---
 
-## Dataset Structure
-### Folder 1: `part1_for_cls` (Classification Task)
-```
-part1_for_cls/
-├── all/
-│   ├── ID_b/      # 2,188 before-puncture images (suffix: _b)
-│   └── ID_i/      # 2,188 during-puncture images (suffix: _i)
-├── tra/           # Training set (80%)
-│   ├── ID_b/      # 1,751 _b images
-│   └── ID_i/      # 1,751 _i images
-└── val/           # Validation set (20%)
-    ├── ID_b/      # 437 _b images
-    └── ID_i/      # 437 _i images
-```
-- **One-to-one correspondence**: Each `_b` image has a matching `_i` image from the same patient.
-- **Labels**: File suffixes indicate puncture state (`_b` = before, `_i` = during).
+## Training Pipeline
 
-### Folder 2: `part2_for_seg` (Segmentation Task)
-```
-part1_for_seg/
-├── all/
-│   ├── images/        # 2,626 thyroid US images
-│   └── NoduleMask/    # 2,626 corresponding nodule masks
-├── tra/               # Training set (80%)
-│   ├── images/        # 2,101 images
-│   └── NoduleMask/    # 2,101 masks
-└── val/               # Validation set (20%)
-    ├── images/        # 525 images
-    └── NoduleMask/    # 525 masks
-```
-- **Masks**: Binary segmentation masks (0=background, 1=target) created using MITK software under medical supervision.
-- **Note**: Only before-puncture nodule positions are annotated due to morphological changes during puncture.
+The training process of TNPPD-Net is conducted in three sequential stages. Please run the scripts in the following order.
 
-## Data Preprocessing
-1. **Quality Control**: Removed images with:
-   - Blurring
-   - Over/underexposure
-   - Noise or artifacts
-2. **Threshold Cropping**:
-   - Eliminated regions with mean pixel value <5 along axes
-   - Cropped text regions (device info, measurements)
-3. **Standardization**:
-   - Final images retain ~75% of original area
-   - Cleaned of non-anatomical elements
+### Step 1: Initial Segmentation Training
+The first step focuses on the initial training for the segmentation task. No pre-trained weights are required for this stage.
 
-## Annotation Process
-### Segmentation
-- **Tools**: Medical Imaging Interaction Toolkit (MITK)
-- **Protocol**:
-  1. Manual pixel-level annotation by medical experts
-  2. Binary masks (thyroid + nodule vs background)
-  3. Addresses challenges: noise, blurred edges, complex anatomy
+    python step1_tra_seg.py --device 'cuda:0' --batch_size 8 --exp_name 'TNPPD' --data_path_s './TNUS/part2_for_seg'
 
-### Classification
-- **Labels**: Derived from diagnostic reports
-- **Implementation**:
-  - File suffix convention (`_b`, `_i`)
-  - Batch scripts for consistency checking
+### Step 2: Classification Training
+The second step trains the classification network. This stage requires loading the segmentation weights obtained from Step 1. The example below uses our provided pre-trained weights. **In practice, you can replace `--model_preseg_path` with the path to your own weights generated in Step 1.**
 
-## Dataset Download Links
-The dataset will be available after the paper is accepted.
-- **Google Drive**: coming soon.
-- **Baidu Netdisk**: coming soon.
+    python step2_tra_cls.py --device 'cuda:0' --batch_size 8 --exp_name 'TNPPD' --data_path_c './TNUS/part1_for_cls' --model_preseg_path './TNPPD_weights/step1_tra_seg.pth'
 
+### Step 3: Segmentation Re-training
+The final step re-trains the segmentation network utilizing the results from the classification task. **Similarly, you can replace `--model_precls_path` with the weights you trained in Step 2.**
 
-# TNPPD-Net: Thyroid Nodule Puncture Position Detection Network
+    python step3_retra_seg.py --device 'cuda:0' --batch_size 8 --exp_name 'TNPPD' --data_path_s './TNUS/part2_for_seg' --model_precls_path './TNPPD_weights/step2_tra_cls.pth'
 
-## Overview
-We propose TNPPD-Net, a thyroid nodule puncture position detection network integrating positional features. It has two branches: one for positional features, the other for localization features. They are fused to predict puncture positions. Our model excels on the TNUS dataset, with visualized key features supporting its effectiveness.
+---
 
-<img width="684" alt="image" src="https://github.com/user-attachments/assets/c6094b97-dc31-4c3a-9799-430bf60b07d3" />
+## Evaluation and Testing
 
-<img width="1412" alt="image" src="https://github.com/user-attachments/assets/bd099788-18f8-43bb-b7ec-148a7154c208" />
+Testing is divided into **Segmentation Testing** and **Classification Testing**. You can evaluate the model's performance at different training stages by modifying the `--model_test_path` parameter. When evaluating your own models, simply replace the path with your target weight file.
 
-<img width="1380" alt="image" src="https://github.com/user-attachments/assets/35771b03-afd0-4ab5-a9d8-550608cd41cd" />
+### Segmentation Testing
+Run `test_seg.py` to evaluate segmentation performance. The examples below demonstrate how to test weights from all three different stages:
 
-<img width="1402" alt="image" src="https://github.com/user-attachments/assets/1c1e752e-d33b-4267-ac1a-f42e98197289" />
+    # Test Step 1 weights
+    python test_seg.py --device 'cuda:0' --batch_size 8 --exp_name 'TNPPD' --data_path_s './TNUS/part2_for_seg' --model_test_path './TNPPD_weights/step1_tra_seg.pth'
 
-<img width="1412" alt="image" src="https://github.com/user-attachments/assets/54aa3372-372b-4a32-9f0e-aca36074d014" />
+    # Test Step 2 weights
+    python test_seg.py --device 'cuda:0' --batch_size 8 --exp_name 'TNPPD' --data_path_s './TNUS/part2_for_seg' --model_test_path './TNPPD_weights/step2_tra_cls.pth'
 
-## The code is coming soon.
+    # Test Step 3 weights
+    python test_seg.py --device 'cuda:0' --batch_size 8 --exp_name 'TNPPD' --data_path_s './TNUS/part2_for_seg' --model_test_path './TNPPD_weights/step3_retra_seg.pth'
+
+### Classification Testing
+Run `test_cls.py` to evaluate classification performance. The examples below demonstrate how to test weights derived from Step 2 and Step 3:
+
+    # Test Step 2 weights
+    python test_cls.py --device 'cuda:0' --batch_size 8 --exp_name 'TNPPD' --data_path_c './TNUS/part1_for_cls' --model_test_path './TNPPD_weights/step2_tra_cls.pth'
+
+    # Test Step 3 weights
+    python test_cls.py --device 'cuda:0' --batch_size 8 --exp_name 'TNPPD' --data_path_c './TNUS/part1_for_cls' --model_test_path './TNPPD_weights/step3_retra_seg.pth'
