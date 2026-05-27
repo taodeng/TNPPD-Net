@@ -1,5 +1,5 @@
 # TNPPD-Net: Precise Positioning of Ultrasound-guided Fine-needle Aspiration Biopsy of Thyroid Nodule
-### Tao Deng, Shengqi Chen, Chengfan Yang, Yi Huang, Buyun Ma, Yang Chen. *Pattern Recognition*, 2026, under review.
+### Tao Deng, Shengqi Chen, Chengfan Yang, Yi Huang, Buyun Ma, Yang Chen. *Pattern Recognition*, 2026, 180: 114041. [Paper](https://www.sciencedirect.com/science/article/pii/S003132032601006X?via=ihub#d1e948)
 
 This repository contains the official PyTorch implementation for **TNPPD-Net**, designed for the intelligent recognition and precise positioning of ultrasound-guided fine-needle aspiration biopsy (FNAB) of thyroid nodules. 
 
@@ -86,3 +86,15 @@ Run `test_cls.py` to evaluate classification performance. The examples below dem
 ### Visual comparison of Grad-CAM heatmaps
 <img width="2494" height="1944" alt="image" src="https://github.com/user-attachments/assets/44cb8352-36b8-4540-885e-adcb6bcd0cbb" />
 
+## Citation
+```bib
+@article{TNPPD2026PR,
+title = {Precise positioning of ultrasound-guided fine-needle aspiration biopsy of thyroid nodule},
+journal = {Pattern Recognition},
+volume = {180},
+pages = {114041},
+year = {2026},
+doi = {https://doi.org/10.1016/j.patcog.2026.114041},
+url = {https://www.sciencedirect.com/science/article/pii/S003132032601006X},
+author = {Tao Deng and Shengqi Chen and Chengfan Yang and Yi Huang and Buyun Ma and Yang Chen}
+}
