@@ -81,8 +81,9 @@ part2_for_seg/
 
 ## Dataset Download Links
 The dataset will be available after the paper is accepted.
-- **Google Drive**: [coming soon]
-- **Baidu Cloud**: [coming soon]
+- **Google Drive**: [Download Link](https://drive.google.com/file/d/1aL3UMhDLHF40iXTgPmkjuWY_EdYJioGF/view?usp=sharing)
+- **Baidu Cloud**: [Download Link](https://pan.baidu.com/s/1H7YALzThJvmosPGe-WTLHQ?pwd=TNUS)
+  - Extraction Code: `TNUS`
 
 ### Note
 All data have been fully de-identified to protect patient privacy in compliance with institutional ethics requirements. These materials are intended exclusively for academic research purposes and should be used in accordance with standard ethical guidelines for medical data.
